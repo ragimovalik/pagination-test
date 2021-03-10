@@ -38,14 +38,14 @@ pagBox.addEventListener("click", ({ target }) => {
 });
 
 //========================================================
-const arr = new Array();
+const itemsArray = new Array();
 
 function arrayMaker(number) {
   for (let i = 0; i < number; i++) {
-    arr.push(i);
+    itemsArray.push(i);
   }
 
-  return arr;
+  return itemsArray;
 }
 
 // arrayMaker(10);
@@ -57,16 +57,18 @@ const devices = {
   mobile: 4,
 };
 
-const pageCutter = (onDeviceItems, arr1) => {
-  let start = 1;
-  let end = start + onDeviceItems;
+const pageCutter = (onDeviceItems, startId) => {
+  let endId = startId + onDeviceItems;
 
-  if (arr1.length < end) arrayMaker(end);
+  if (itemsArray.length < endId) arrayMaker(endId);
 
-  const sierra = arr1.filter((el, idx, array) => idx >= start && idx < end);
+  const sierra = itemsArray.filter(
+    (el, idx, array) => idx >= startId && idx < endId
+  );
 
   return (screen.textContent = sierra);
 };
 
-console.log(pageCutter(devices.desktop, arr), arr);
+//pageCounter function ??
 
+console.log(pageCutter(devices.desktop, 10), itemsArray);
