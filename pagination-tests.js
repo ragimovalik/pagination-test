@@ -2,7 +2,9 @@ const pagBox = document.getElementById("pag-box");
 const pagItem = document.querySelectorAll(".pag__item");
 const pagBtn = document.querySelectorAll(".pag__btn");
 
-pagBox.firstElementChild.classList.add("active");
+// pagBox.firstElementChild.classList.add("active");
+const firstEl = pagBox.firstElementChild;
+firstEl.nextElementSibling.classList.add("active");
 
 pagBox.addEventListener("click", ({ target }) => {
   const items = pagItem;
@@ -22,12 +24,14 @@ pagBox.addEventListener("click", ({ target }) => {
   console.log(target.textContent);
 
   if (target.textContent === "Next")
-    for (let i = 1; i < items.length - 1; i++) {
+    for (let i = 2; i < items.length - 1; i++) {
       const element = items[i];
       element.textContent = +element.textContent + 5;
     }
-});
 
-const pageDesktop = (page) => console.log(Math.ceil(page / 9));
-const pageTablet = (page) => console.log(Math.ceil(page / 8));
-const pageMobile = (page) => console.log(Math.ceil(page / 4));
+  if (target.textContent === "Prev")
+    for (let i = 2; i < items.length - 1; i++) {
+      const element = items[i];
+      element.textContent = +element.textContent - 5;
+    }
+});
