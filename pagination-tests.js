@@ -1,6 +1,7 @@
 const pagBox = document.getElementById("pag-box");
 const pagItem = document.querySelectorAll(".pag__item");
 const pagBtn = document.querySelectorAll(".pag__btn");
+const screen = document.getElementById("screen");
 
 // pagBox.firstElementChild.classList.add("active");
 const firstEl = pagBox.firstElementChild;
@@ -18,10 +19,10 @@ pagBox.addEventListener("click", ({ target }) => {
 
   target.classList.add("active");
 
-  // pagItem.classList.add('active')
+  let clickTarget = target.textContent;
 
-  console.log(target.nodeName);
-  console.log(target.textContent);
+  // console.log(target.nodeName);
+  console.log(clickTarget);
 
   if (target.textContent === "Next")
     for (let i = 2; i < items.length - 1; i++) {
@@ -50,10 +51,22 @@ function arrayMaker(number) {
 // arrayMaker(10);
 // console.log(arrayMaker(20));
 
-const november = (start, end, arr1) => {
-  if (arr1.length < end) arrayMaker(end);
-
-  return arr1.filter((el, idx, array) => idx >= start - 1 && idx < end);
+const devices = {
+  desktop: 9,
+  tablet: 8,
+  mobile: 4,
 };
 
-console.log(november(25, 35, arr), arr);
+const pageCutter = (onDeviceItems, arr1) => {
+  let start = 1;
+  let end = start + onDeviceItems;
+
+  if (arr1.length < end) arrayMaker(end);
+
+  const sierra = arr1.filter((el, idx, array) => idx >= start && idx < end);
+
+  return (screen.textContent = sierra);
+};
+
+console.log(pageCutter(devices.desktop, arr), arr);
+

@@ -22,6 +22,21 @@ body {
   align-items: center;
 }
 
+.page-title {
+  display: block;
+  text-align: center;
+}
+
+.page {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  height: 60px;
+  text-align: center;
+  
+}
+
 .pag__box {
   width: 550px;
   height: 100px;
@@ -43,8 +58,8 @@ body {
   justify-content: center;
   align-items: center;
 
-  width: 55px;
-  height: 55px;
+  width: 45px;
+  height: 45px;
   outline: 1px solid blue;
 }
 
