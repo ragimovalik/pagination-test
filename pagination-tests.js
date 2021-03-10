@@ -35,3 +35,25 @@ pagBox.addEventListener("click", ({ target }) => {
       element.textContent = +element.textContent - 5;
     }
 });
+
+//========================================================
+const arr = new Array();
+
+function arrayMaker(number) {
+  for (let i = 0; i < number; i++) {
+    arr.push(i);
+  }
+
+  return arr;
+}
+
+// arrayMaker(10);
+// console.log(arrayMaker(20));
+
+const november = (start, end, arr1) => {
+  if (arr1.length < end) arrayMaker(end);
+
+  return arr1.filter((el, idx, array) => idx >= start - 1 && idx < end);
+};
+
+console.log(november(25, 35, arr), arr);
