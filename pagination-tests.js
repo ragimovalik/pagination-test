@@ -1,47 +1,32 @@
-// Refs
 const pagBox = document.getElementById("pag-box");
 const pagItem = document.querySelectorAll(".pag__item");
 const pagBtn = document.querySelectorAll(".pag__btn");
 
-// Active block on PageStart
 pagBox.firstElementChild.classList.add("active");
 
-//Listener
-pagBox.addEventListener("click", (event) => {
-  if (event.target.nodeName === "UL") return;
+pagBox.addEventListener("click", ({ target }) => {
+  const items = pagItem;
+  console.log(items);
+
+  if (target.nodeName === "DIV") return;
 
   const activeClass = pagBox.querySelector(".active");
 
   if (activeClass) activeClass.classList.remove("active");
 
-  event.target.classList.add("active");
+  target.classList.add("active");
+
+  // pagItem.classList.add('active')
+
+  console.log(target.nodeName);
+  console.log(target.textContent);
+
+  if (target.textContent === "Next")
+    for (let i = 1; i < items.length - 1; i++) {
+      const element = items[i];
+      element.textContent = +element.textContent + 5;
+    }
 });
-
-function pagPageBtnAdder(number) {
-  const arr = [];
-
-  for (let i = 0; i < number; i++) {
-    const item = `<li class="pag__item"><button class="pag__btn">${
-      i + 2
-    }</button></li>`;
-
-    arr.push(item);
-  }
-
-  pagBox.insertAdjacentHTML("beforeend", arr.join(""));
-
-  const pages = pagBox.children;
-
-  const show = (array, start, end) => {
-    [...pages]
-      .filter((el, idx) => idx < start || idx > end)
-      .map((el) => el.classList.add("hidden"));
-  };
-
-  return show(pages, 0, 5);
-}
-
-pagPageBtnAdder(10);
 
 const pageDesktop = (page) => console.log(Math.ceil(page / 9));
 const pageTablet = (page) => console.log(Math.ceil(page / 8));
